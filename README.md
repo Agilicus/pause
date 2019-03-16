@@ -9,3 +9,9 @@ and then exec into it as needed.
 
 The alternative would be a command of 'sleep' or 'tail -f /dev/null'
 but these do not terminate gracefully.
+
+## License
+
+All files in this directory are made available under the
+[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
