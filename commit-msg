@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[[ -f .conform.yaml && $(type -P conform) ]] && conform enforce --commit-msg-file "$1"
+
