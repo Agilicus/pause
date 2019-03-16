@@ -10,6 +10,34 @@ and then exec into it as needed.
 The alternative would be a command of 'sleep' or 'tail -f /dev/null'
 but these do not terminate gracefully.
 
+## Usage
+
+You can run this from docker:
+`docker run --rm -it agilicus/pause`
+
+but the most likely use is to create a long-lived Kubernetes pod.
+
+You can do this with `kubectl run`:
+
+`kubectl run debug --restart=Never --image=agilicus/pause`
+
+You can also do this declaratively:
+
+```
+cat << EOF | kubectl create -f -
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug
+spec:
+  containers:
+  - name: debug
+    image: agilicus/pause
+EOF
+```
+
+
 ## License
 
 All files in this directory are made available under the
