@@ -7,5 +7,7 @@ RUN apk add gcc build-base \
 
 FROM alpine:3.9.2
 LABEL maintainer="Don Bowman <don@agilicus.com>"
+RUN apk add bash \
+ && sed -i 's?ash$?bash?g' /etc/passwd
 COPY --from=build /usr/local/bin/pause /usr/local/bin/pause
 CMD /usr/local/bin/pause
