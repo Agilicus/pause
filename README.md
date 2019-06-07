@@ -39,7 +39,7 @@ EOF
 
 When done, run `kubectl delete pod/debug`
 
-There are no tools installed in the container. To add them, run `apk add <tool>`.
+There are no tools installed in the container. To add them, run `apt-get update; apt-get install <tool>`.
 
 Simple tools you might want:
 

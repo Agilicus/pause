@@ -1,13 +1,12 @@
-FROM alpine:3.9.2 as build
+FROM ubuntu:18.04 as build
 LABEL maintainer="Don Bowman <don@agilicus.com>"
 
 COPY ./pause.c /tmp
-RUN apk add gcc build-base \
+RUN apt-get update \
+ && apt-get install -y gcc \
  && gcc -o /usr/local/bin/pause /tmp/pause.c
 
-FROM alpine:3.9.2
+FROM ubuntu:18.04
 LABEL maintainer="Don Bowman <don@agilicus.com>"
-RUN apk add bash \
- && sed -i 's?ash$?bash?g' /etc/passwd
 COPY --from=build /usr/local/bin/pause /usr/local/bin/pause
 CMD /usr/local/bin/pause
